@@ -1,0 +1,10 @@
+{% load static %}
+{% if ad %}
+<div>
+    <a href="{{ ad.link }}" target="_blank">
+        <img src="{{ ad.image.url }}" alt="Ad" style="width: 100%; height: auto; display: block; border: 2px solid green;">
+    </a>
+</div>
+{% else %}
+    <p>No advertisements available</p>
+{% endif %}

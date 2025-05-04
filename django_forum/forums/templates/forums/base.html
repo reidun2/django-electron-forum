@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Forum{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% load static %}
+    <link href="{% static 'forums/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+        Welcome to forum
+    </header>
+    <div class="main_block">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td id = "sidebar">
+                        <div id = "sidebarwrap">
+                            {% include "forums/ads/ads_page.html" %}
+                        </div>
+                    </td>
+                    <td id="main_content">
+                        <div id = "main_wrap">
+                            <div id="rules">
+                                <h3 class="cat_title">Rules</h3>
+                                <table class="forums">
+                                    <tbody>
+                                        <tr>
+                                            <td class="row">
+                                                <div class="forum-list">
+                                                    {% block rules %}
+                                                    <div>1. Don't be a jerk</div>
+                                                    <div>2. Be respectful</div>
+                                                    <div>3. Don't spam</div>
+                                                    <div>4. Don't post explicit content</div>
+                                                    <div>5. Don't post links to malware</div>
+                                                    <div>6. Don't post links to phishing sites</div>
+                                                    <div>7. Don't post links to illegal content</div>
+                                                    {% endblock %}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="forums_list_wrap">
+                                <div id="forum_wrap">
+                                    <table class="w100">
+                                        <tbody>
+                                            <tr>
+                                                <td id= "categories-wrap">
+                                                    <div id="p" class="category">
+                                                        <h3 class="cat_title">Popular</h3>
+                                                        <table id="p" class="forums">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="row">
+                                                                        <h4 class="forumlink"><a href="viewforum.php?f=638">Browser games</a></h4>
+                                                                        <div class="forum-list">
+                                                                            <a href="#" class="forum-link">Minecraft</a>
+                                                                            <span class="badge bg-secondary">1.2K</span>
+                                                                            <a href="#" class="forum-link">World of Tanks</a>
+                                                                            <span class="badge bg-secondary">856</span>
+                                                                            <a href="#" class="forum-link">Dota 2</a>
+                                                                            <span class="badge bg-secondary">2.1K</span>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="row">
+                                                                        <h4 class="forumlink"><a href="#">Mobile games</a></h4>
+                                                                        <div class="forum-list">
+                                                                            <a href="#" class="forum-link">PUBG Mobile</a>
+                                                                            <span class="badge bg-secondary">3.4K</span>
+                                                                            <a href="#" class="forum-link">Clash of Clans</a>
+                                                                            <span class="badge bg-secondary">945</span>
+                                                                            <a href="#" class="forum-link">Genshin Impact</a>
+                                                                            <span class="badge bg-secondary">1.8K</span>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                    </tbody>
+                </table>
+            </td>
+            <section class="main_block_boards">
+                <div class="boards__col">
+					<ul class="boards__ul">
+                        <li><a href="/cars/">Cars</a></li>
+                        <li><a href="/bicycles/">Bicycles</a></li>
+                        <li><a href="/business/">Business</a></li>
+                        <li><a href="/books/">Books</a></li>
+                        <li><a href="/comics/">Comics</a></li>
+                        <li><a href="/cryptocurrency/">Cryptocurrency</a></li>
+                        <li><a href="/countries/">Other Countries</a></li>
+                        <li><a href="/fashion/">Fashion & Style</a></li>
+                        <li><a href="/fitness/">Fitness</a></li>
+                        <li><a href="/languages/">Languages</a></li>
+                        <li><a href="/football/">Football</a></li>
+                        <li><a href="/history/">History</a></li>
+                        <li><a href="/medicine/">Medicine</a></li>
+                        <li><a href="/motorcycles/">Motorcycles</a></li>
+                        <li><a href="/movies/">Movies</a></li>
+                        <li><a href="/music/">Music</a></li>
+                        <li><a href="/animals/">Animals</a></li>
+                        <li><a href="/psychology/">Psychology</a></li>
+                        <li><a href="/religion/">Religion</a></li>
+                        <li><a href="/science/">Science</a></li>
+                        <li><a href="/sci-fi/">Sci-Fi</a></li>
+					</ul>
+				</div>
+                <div class="boards__col">
+					<ul class="boards__ul">
+						<li><a href="/paranormal/">Paranormal</a></li>
+						<li><a href="/sports/">Sports</a></li>
+						<li><a href="/space/">Space</a></li>
+						<li><a href="/tv-series/">TV Series</a></li>
+						<li><a href="/education/">Education</a></li>
+						<li><a href="/weapons/">Weapons</a></li>
+						<li><a href="/military/">Military Tech</a></li>
+						<li><a href="/wallpapers/">Wallpapers & Hi-Res</a></li>
+						<li><a href="/conspiracy/">Conspiracy Theories</a></li>
+						<br>
+						<li class="boards__title">Creative</li>
+						<li><a href="/design/">Design</a></li>
+						<li><a href="/dining/">Dining</a></li>
+						<li><a href="/diy/">DIY & Hobbies</a></li>
+						<li><a href="/writing/">Writing</a></li>
+						<li><a href="/musicians/">Musicians</a></li>
+						<li><a href="/painting/">Painting</a></li>
+						<li><a href="/photography/">Photography</a></li>
+						<li><a href="/work/">Work</a></li>
+						
+						<br>
+						<li class="boards__title">Politics & News</li>
+						<li><a href="/politics/">Politics</a></li>
+						<li><a href="/news/">News</a></li>
+						<li><a href="/international/">International</a></li>
+						<br>
+					</ul>
+				</div>
+                <div class="boards__col">
+					<ul class="boards__ul">
+						<li class="boards__title">Tech & Software</li>
+						<li><a href="/ai/">Artificial Intelligence</a></li>
+						<li><a href="/gamedev/">Gamedev</a></li>
+						<li><a href="/hardware/">Hardware</a></li>
+						<li><a href="/mobile/">Mobile Devices</a></li>
+						<li><a href="/programming/">Programming</a></li>
+						<li><a href="/radio/">Radio Engineering</a></li>
+						<li><a href="/software/">Software</a></li>
+						<li><a href="/technology/">Technology</a></li>
+						
+						<br>
+						<li class="boards__title">Games</li>
+						<li><a href="/board-games/">Board Games</a></li>
+						<li><a href="/consoles/">Consoles</a></li>
+						<li><a href="/gacha/">Gacha Games</a></li>
+						<li><a href="/strategy/">Grand Strategy Games</a></li>
+						<li><a href="/elder-scrolls/">The Elder Scrolls</a></li>
+						<li><a href="/video-games/">Video Games</a></li>
+						<li><a href="/vg-general/">Video Games General</a></li>
+						<li><a href="/text-rpg/">Text RPGs</a></li>
+					</ul>
+				</div>
+                <div class="boards__col">
+					<ul class="boards__ul">
+						<li><a href="/random/">Random</a></li>
+						<li><a href="/social/">Social</a></li>
+						<li><a href="/animation/">Animation</a></li>
+						<li><a href="/requests/">Requests</a></li>
+						<li><a href="/api/">API</a></li>
+						<li><a href="/refuge/">Refuge</a></li>
+						<li><a href="/drawing/">Drawing</a></li>
+					</ul>
+				</div>
+            </section>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

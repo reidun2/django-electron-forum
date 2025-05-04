@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ads</title>
+    <script defer src="../renderer/ads.js"></script>
+</head>
+<body>
+    <h1>Ads</h1>
+    <form id="upload-ad-form" enctype="multipart/form-data" style="margin-bottom: 20px;">
+        <input type="file" id="ad-image" name="image" accept="image/*" required>
+        <input type="url" id="ad-link" name="link" placeholder="https://example.com" style="width: 300px;" required>
+        <button type="submit">Upload Ad</button>
+    </form>
+    <ul id="ads-list"></ul>
+</body>
+</html>

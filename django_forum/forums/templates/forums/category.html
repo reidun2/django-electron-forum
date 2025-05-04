@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ category.name }}</title>
+    {% load static %}
+    <link href="{% static 'forums/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="main_block">
+        <table class="forums">
+            <tbody>
+                <tr>
+                    <td id = "sidebar">
+                        <div id = "sidebarwrap">
+                            {% include "forums/ads/ads_page.html" %}
+                        </div>
+                    </td>
+                    <td id="main_content">
+                        <div id = "main_wrap">
+                            <div id="rules">
+                                <h1 class="cat_title">{{ category.name }}</h1>
+                                <a href="{% url 'home' %}">Back to Base</a>
+                                <p>{{ category.description }}</p>
+                                {% block content %}
+                                {% endblock %}
+                                <ul>
+                                    {% for forum in forums %}
+                                      <li class="forum cat_title">
+                                        <a href="{% url 'forum-detail' forum.global_id %}">{{ forum.name }}</a> — {{ forum.description }}
+                                        {% if forum.image %}
+                                          <img src="{{ forum.image.url }}" alt="Attached Image" style="max-width: 300px;">
+                                        {% endif %}
+                                      </li>
+                                    {% empty %}
+                                      <li>No forums in this category.</li>
+                                    {% endfor %}
+                                  </ul>
+                                  <div id="pagination">
+                                    <button id="prev-btn">Previous</button>
+                                    <span id="current-page">1</span>
+                                    <button id="next-btn">Next</button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+      let currentPage = 1;
+      const forumsPerPage = 10;
+      const forumElements = document.querySelectorAll('.forum');
+      const totalPages = Math.ceil(forumElements.length / forumsPerPage);
+
+      function showPage(pageNum) {
+          forumElements.forEach((el, index) => {
+              const pageIndex = Math.floor(index / forumsPerPage) + 1;
+              el.style.display = pageIndex === pageNum ? 'block' : 'none';
+          });
+          document.getElementById('current-page').innerText = pageNum;
+      }
+
+      document.getElementById('next-btn').addEventListener('click', () => {
+          if (currentPage < totalPages) {
+              currentPage++;
+              showPage(currentPage);
+          }
+      });
+
+      document.getElementById('prev-btn').addEventListener('click', () => {
+          if (currentPage > 1) {
+              currentPage--;
+              showPage(currentPage);
+          }
+      });
+
+      showPage(currentPage);
+  </script>
+</body>
+</html>

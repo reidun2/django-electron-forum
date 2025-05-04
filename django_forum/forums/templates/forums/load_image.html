@@ -1,0 +1,7 @@
+{% load static %}
+
+<div id="image-container">
+  {% for image in images %}
+    <img src="{% static 'myapp/images/'|add:image %}" alt="Image">
+  {% endfor %}
+</div>

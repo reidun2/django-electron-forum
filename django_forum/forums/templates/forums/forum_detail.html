@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ forum.name }}</title>
+  {% load static %}
+  <link href="{% static 'forums/style.css' %}" rel="stylesheet">
+</head>
+<body>
+  <div class="main_block">
+    <table class="forums">
+        <tbody>
+            <tr>
+                <td id = "sidebar">
+                    <div id = "sidebarwrap">
+                        {% include "forums/ads/ads_page.html" %}
+                    </div>
+                </td>
+                <td id="main_content">
+                    <div id = "main_wrap">
+                        <div id="rules">
+                          <h1>{{ forum.name }}</h1>
+                          <p>{{ forum.description }}</p>
+                          <hr>
+                          {% if forum.image %}
+                          <div style="margin-top: 10px;">
+                            <img src="{{ forum.image.url }}" alt="Attached Image" style="max-width: 300px;">
+                          </div>
+                        {% endif %}
+                          <h2>Messages</h2>
+                          {% if messages %}
+                          <ul class="list-group mb-3">
+                            {% for message in messages %}
+                             <li class="list-group-item">
+                              <strong>{{ message.global_id }}</strong>
+                              <strong>{{ message.content }}</strong>
+                              <small>{{ message.created_at }}</small>
+                              {% if message.image %}
+                                <div style="margin-top: 10px;">
+                                  <img src="{{ message.image.url }}" alt="Attached Image" style="max-width: 300px;">
+                                </div>
+                              {% endif %}
+                             </li>
+                            {% endfor %}    
+                          {% else %}
+                            <li class="list-group-item">No messages.</li>
+                          {% endif %}
+                          </ul>
+                           
+                          <div id="pagination">
+                            <button id="prev-btn">Previous</button>
+                            <span id="current-page">1</span>
+                            <button id="next-btn">Next</button>
+                        </div>
+
+                          <h5>Leave a message:</h5>
+                          <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-success">Send</button>
+                          </form>
+                          <a href="{% url 'category-detail' slug=forum.category.slug %}">Back to category</a>
+                        </div>
+                    </div>
+                  </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+  <script>
+    let currentPage = 1;
+    const messagesPerPage = 10;
+    const messageElements = document.querySelectorAll('.list-group-item');
+    const totalPages = Math.ceil(messageElements.length / messagesPerPage);
+
+    function showPage(pageNum) {
+        messageElements.forEach((el, index) => {
+            const pageIndex = Math.floor(index / messagesPerPage) + 1;
+            el.style.display = pageIndex === pageNum ? 'block' : 'none';
+        });
+        document.getElementById('current-page').innerText = pageNum;
+    }
+
+    document.getElementById('next-btn').addEventListener('click', () => {
+        if (currentPage < totalPages) {
+            currentPage++;
+            showPage(currentPage);
+        }
+    });
+
+    document.getElementById('prev-btn').addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            showPage(currentPage);
+        }
+    });
+
+    showPage(currentPage);
+</script>
+</body>
+</html>

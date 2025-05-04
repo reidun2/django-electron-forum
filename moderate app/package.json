@@ -1,0 +1,17 @@
+{
+  "name": "moderate-app",
+  "version": "1.0.0",
+  "description": "Electron login app",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "axios-cookiejar-support": "^5.0.1",
+    "tough-cookie": "^4.1.3"
+  },
+  "devDependencies": {
+    "electron": "^28.1.3"
+  }
+}
